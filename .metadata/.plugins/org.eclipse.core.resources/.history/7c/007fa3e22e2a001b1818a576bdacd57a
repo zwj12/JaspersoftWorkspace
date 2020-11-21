@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="robot-elog" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5021754f-d2fa-423f-bbb3-c85bd6ac6631">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[YnVyX3BkYS5yb2JvdC1lbG9nICwxOTksMTksMzQzZDk1ZGYtOWNlYS00NzIxLWFiNmUtYjc2NzFj
+Mzk4MjJjO2J1cl9wZGEucm9ib3QtbXNndHlwZSAsMzcyLDE1OCwxZmZiYTNmMS1iMDZmLTQ3MDQt
+Yjc0ZC1hMWQ4N2QxYTJkY2Q7]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDB"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:8082/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="jasperadmin"/>
+	<property name="ireport.jasperserver.report.resource" value="/reports/robot_elog_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/reports/robot_elog"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="MsgType">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{msg_type}==2]]></conditionExpression>
+			<style forecolor="#FF9900"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{msg_type}==3]]></conditionExpression>
+			<style forecolor="#FF0000"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM bur_pda.`robot-elog`
+	INNER JOIN bur_pda.`robot-msgtype` ON 
+	 bur_pda.`robot-msgtype`.msg_type = bur_pda.`robot-elog`.msg_type]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ip_address" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ip_address"/>
+		<property name="com.jaspersoft.studio.field.label" value="ip_address"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="serial_number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="serial_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="serial_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="controller_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="controller_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="controller_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="system_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="system_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="system_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sysid" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sysid"/>
+		<property name="com.jaspersoft.studio.field.label" value="sysid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tstamp" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="tstamp"/>
+		<property name="com.jaspersoft.studio.field.label" value="tstamp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="elogseqnum" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="elogseqnum"/>
+		<property name="com.jaspersoft.studio.field.label" value="elogseqnum"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="title" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="title"/>
+		<property name="com.jaspersoft.studio.field.label" value="title"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="code" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="code"/>
+		<property name="com.jaspersoft.studio.field.label" value="code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="msg_type" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="msg_type"/>
+		<property name="com.jaspersoft.studio.field.label" value="msg_type"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="msg_type_text" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="msg_type_text"/>
+		<property name="com.jaspersoft.studio.field.label" value="msg_type_text"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-msgtype"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="130" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="80" y="0" width="400" height="62" uuid="c8c36ce8-4217-46ba-8214-7875024391ee"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Robot Event Log]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="50" height="50" uuid="654e5b43-1d41-4723-9345-254cf77ed567"/>
+				<imageExpression><![CDATA["abb-logo-33px.svg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement style="SubTitle" x="80" y="70" width="400" height="30" uuid="693c9bce-585b-4f13-95ab-ae827cd17634"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{controller_name} + " - " + $F{system_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="SubTitle" x="80" y="100" width="400" height="30" uuid="f8cba43f-a645-408e-9ae8-c5b061620280"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{serial_number} + " (" + $F{ip_address} + ")"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="0" width="60" height="20" uuid="37a8e759-8e6c-4888-bd0f-5d72a1953449">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4fa5529b-95f7-419e-9d3b-a037b79ffc00"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="0" width="40" height="20" uuid="b9d647a6-51d0-4b11-b6f1-e32328a66af5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="37ba7f94-c5f4-493e-be5f-14761e07567a"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="0" width="270" height="20" uuid="5f03e24e-f305-45ae-9526-008b115078c3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4ef16145-e09d-4123-960e-03f7cf4f9ca6"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="50" height="20" uuid="6804e7e7-5334-432c-8f5b-9af95c26c06f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="40b91158-a1c4-450c-b419-931981b2ce2b"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Seq.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="605d5034-07f3-415a-84e9-47328d45ac3e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="43b91123-c38e-4c3a-9d5b-c36372970650"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Date and Time]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement style="MsgType" x="0" y="0" width="60" height="20" uuid="56cacf3d-4cf8-4cbb-bd5f-f362d23d0095">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4fa5529b-95f7-419e-9d3b-a037b79ffc00"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{msg_type_text}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="0" width="40" height="20" uuid="2f16972b-a6f7-48b5-a18b-bd903d0e2285">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="37ba7f94-c5f4-493e-be5f-14761e07567a"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="0" width="270" height="20" uuid="1fb560b4-6b0c-42f1-90bb-15fa4ecb0f05">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4ef16145-e09d-4123-960e-03f7cf4f9ca6"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="50" height="20" uuid="53d34ca0-4e5d-48c2-aa28-99ae2693faba">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="40b91158-a1c4-450c-b419-931981b2ce2b"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{elogseqnum}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy-MM-dd hh:mm:ss">
+				<reportElement x="455" y="0" width="100" height="20" uuid="74465591-85a1-4bee-a110-0e0da3361b3b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="43b91123-c38e-4c3a-9d5b-c36372970650"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tstamp}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="0" width="197" height="20" forecolor="#736343" uuid="02d3884b-f74e-4f48-a4b3-808db98ecf7e">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="0" width="80" height="20" forecolor="#736343" uuid="6b810314-71db-47d7-b229-e0d6c0d06547">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="0" width="40" height="20" forecolor="#736343" uuid="8fe270ba-c78e-4fff-b01f-7489b69a623a">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
