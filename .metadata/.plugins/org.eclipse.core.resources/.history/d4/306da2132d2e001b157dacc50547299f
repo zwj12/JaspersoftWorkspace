@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="robot-elog_statistics" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9bc222de-bf02-40b3-a983-427a1b5e6b35">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDB"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:8082/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="jasperadmin"/>
+	<property name="ireport.jasperserver.report.resource" value="/reports/robot_elog_statistics2_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/reports/robot_elog_statistics2"/>
+	<parameter name="IPAddress" class="java.lang.String">
+		<defaultValueExpression><![CDATA["10.0.2.2"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SystemName" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Controller_Aprol2"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT robot_elog.msg_type,robot_msgtype.msg_type_text,
+	count( robot_elog.id) as quantity	
+FROM bur_pda.`robot-msgtype` AS robot_msgtype 
+	INNER JOIN bur_pda.`robot-elog` AS robot_elog ON 
+	 robot_elog.msg_type = robot_msgtype.msg_type 
+WHERE robot_elog.ip_address =  $P{IPAddress} AND robot_elog.system_name =  $P{SystemName} 
+GROUP BY robot_elog.msg_type]]>
+	</queryString>
+	<field name="msg_type" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="msg_type"/>
+		<property name="com.jaspersoft.studio.field.label" value="msg_type"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="msg_type_text" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="msg_type_text"/>
+		<property name="com.jaspersoft.studio.field.label" value="msg_type_text"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-msgtype"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="quantity" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="quantity"/>
+		<property name="com.jaspersoft.studio.field.label" value="quantity"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="280" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<pie3DChart>
+				<chart evaluationTime="Report">
+					<reportElement x="80" y="0" width="400" height="280" uuid="8200cdfd-3b57-4185-8dd8-2efe53d8ca0b">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset resetType="Report"/>
+					<keyExpression><![CDATA[$F{msg_type_text}]]></keyExpression>
+					<valueExpression><![CDATA[$F{quantity}]]></valueExpression>
+					<labelExpression><![CDATA[$F{msg_type_text} + " (" + $F{quantity} + ")"]]></labelExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+		</band>
+	</summary>
+</jasperReport>

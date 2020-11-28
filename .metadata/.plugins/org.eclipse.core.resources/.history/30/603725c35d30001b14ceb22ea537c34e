@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RobotOverallEquipmentEffectiveness" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e4b5c66d-e997-4ce8-a9b9-25f68b3e1cec">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDB"/>
+	<parameter name="IPAddress" class="java.lang.String">
+		<defaultValueExpression><![CDATA["10.0.2.2"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SystemName" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Controller_Aprol"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OEEFrom" class="java.sql.Date">
+		<defaultValueExpression><![CDATA[DATE(2020,11,23)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OEETo" class="java.sql.Date">
+		<defaultValueExpression><![CDATA[DATE(2020,11,24)]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT abbraat_robotpda.system_name, SUM(executing_time) AS oee_time FROM `BUR_PDA`.`abbraat-robotpda` AS abbraat_robotpda
+WHERE abbraat_robotpda.ip_address =  $P{IPAddress} AND abbraat_robotpda.system_name =  $P{SystemName}  AND  abbraat_robotpda.ts>= $P{OEEFrom}  AND abbraat_robotpda.ts< $P{OEETo}
+UNION 
+(
+SELECT abbraat_robotpda.system_name, UNIX_TIMESTAMP($P{OEETo})-UNIX_TIMESTAMP($P{OEEFrom}) FROM `abbraat-robotpda` AS abbraat_robotpda 
+WHERE abbraat_robotpda.ip_address =  $P{IPAddress} AND abbraat_robotpda.system_name =  $P{SystemName}  AND  abbraat_robotpda.ts>= $P{OEEFrom}  AND abbraat_robotpda.ts< $P{OEETo}
+LIMIT 1
+)  ]]>
+	</queryString>
+	<field name="system_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="system_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="system_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="oee_time" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="oee_time"/>
+		<property name="com.jaspersoft.studio.field.label" value="oee_time"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="38" y="0" width="100" height="30" uuid="399f5ee2-a79f-472f-941d-d837b9057e1d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="23655cef-0c80-4705-8027-49cd368b2823"/>
+				</reportElement>
+				<text><![CDATA[system_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="0" width="100" height="30" uuid="f3143ed8-5f4e-4c13-8bc8-1d38c2a2bdb5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1adc7c8d-ba08-4edb-b8f3-08cce35ca923"/>
+				</reportElement>
+				<text><![CDATA[oee_time]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="38" y="40" width="100" height="30" uuid="3055dec0-2b80-46e2-ad0e-a8d80dae0fbf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="23655cef-0c80-4705-8027-49cd368b2823"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{system_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="257" y="60" width="100" height="30" uuid="d45929b2-15ba-48fd-bc7a-3a88f5073c9d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1adc7c8d-ba08-4edb-b8f3-08cce35ca923"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{oee_time}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

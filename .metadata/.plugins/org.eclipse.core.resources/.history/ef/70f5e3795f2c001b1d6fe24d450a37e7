@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="robot_elog_table" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e5651dc8-aa22-48ae-b2a4-371bbc2228e7">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[YnVyX3BkYS5yb2JvdC1lbG9nIEFTICw3Niw0NCw4ZGEwN2Q1Yi0yYjZlLTQzOTAtYTlkMy1mMGNk
+ODZlZDEyMTY7]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDB"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM bur_pda.`robot-elog`]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ip_address" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ip_address"/>
+		<property name="com.jaspersoft.studio.field.label" value="ip_address"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="serial_number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="serial_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="serial_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="controller_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="controller_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="controller_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="system_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="system_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="system_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sysid" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sysid"/>
+		<property name="com.jaspersoft.studio.field.label" value="sysid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tstamp" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="tstamp"/>
+		<property name="com.jaspersoft.studio.field.label" value="tstamp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="elogseqnum" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="elogseqnum"/>
+		<property name="com.jaspersoft.studio.field.label" value="elogseqnum"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="title" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="title"/>
+		<property name="com.jaspersoft.studio.field.label" value="title"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="code" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="code"/>
+		<property name="com.jaspersoft.studio.field.label" value="code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="msg_type" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="msg_type"/>
+		<property name="com.jaspersoft.studio.field.label" value="msg_type"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="robot-elog"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

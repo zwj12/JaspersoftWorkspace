@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RobotOverallEquipmentEffectiveness" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e4b5c66d-e997-4ce8-a9b9-25f68b3e1cec">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDB"/>
+	<parameter name="IPAddress" class="java.lang.String">
+		<defaultValueExpression><![CDATA["10.0.2.2"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SystemName" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Controller_Aprol"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OEEFrom" class="java.sql.Date">
+		<defaultValueExpression><![CDATA[DATE(2020,11,23)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OEETo" class="java.sql.Date">
+		<defaultValueExpression><![CDATA[DATE(2020,11,24)]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT abbraat_robotpda.*, SUM(executing_time) FROM `BUR_PDA`.`abbraat-robotpda` AS abbraat_robotpda
+WHERE abbraat_robotpda.ip_address =  $P{IPAddress} AND abbraat_robotpda.system_name =  $P{SystemName}  AND  abbraat_robotpda.ts>= $P{OEEFrom}  AND abbraat_robotpda.ts< $P{OEETo}  AND abbraat_robotpda.system_name="Controller_Aprol"]]>
+	</queryString>
+	<field name="ts" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="ts"/>
+		<property name="com.jaspersoft.studio.field.label" value="ts"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ts_switch_mark" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ts_switch_mark"/>
+		<property name="com.jaspersoft.studio.field.label" value="ts_switch_mark"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="project" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="project"/>
+		<property name="com.jaspersoft.studio.field.label" value="project"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="instance" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="instance"/>
+		<property name="com.jaspersoft.studio.field.label" value="instance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rec_rate" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="rec_rate"/>
+		<property name="com.jaspersoft.studio.field.label" value="rec_rate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="equip_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="equip_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="equip_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ip_address" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ip_address"/>
+		<property name="com.jaspersoft.studio.field.label" value="ip_address"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="serial_number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="serial_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="serial_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="controller_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="controller_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="controller_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="system_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="system_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="system_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="robot_ware" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="robot_ware"/>
+		<property name="com.jaspersoft.studio.field.label" value="robot_ware"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="operating_mode" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="operating_mode"/>
+		<property name="com.jaspersoft.studio.field.label" value="operating_mode"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="controller_state" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="controller_state"/>
+		<property name="com.jaspersoft.studio.field.label" value="controller_state"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="execution_state" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="execution_state"/>
+		<property name="com.jaspersoft.studio.field.label" value="execution_state"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="run_mode" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="run_mode"/>
+		<property name="com.jaspersoft.studio.field.label" value="run_mode"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="operating_mode_code" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="operating_mode_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="operating_mode_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="controller_state_code" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="controller_state_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="controller_state_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="execution_state_code" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="execution_state_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="execution_state_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="run_mode_code" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="run_mode_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="run_mode_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="speed_ratio" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="speed_ratio"/>
+		<property name="com.jaspersoft.studio.field.label" value="speed_ratio"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="task_executing" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="task_executing"/>
+		<property name="com.jaspersoft.studio.field.label" value="task_executing"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pf_idle1" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="pf_idle1"/>
+		<property name="com.jaspersoft.studio.field.label" value="pf_idle1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pf_executing1" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="pf_executing1"/>
+		<property name="com.jaspersoft.studio.field.label" value="pf_executing1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pf_active_order1" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="pf_active_order1"/>
+		<property name="com.jaspersoft.studio.field.label" value="pf_active_order1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pf_is_service1" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="pf_is_service1"/>
+		<property name="com.jaspersoft.studio.field.label" value="pf_is_service1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="part_count" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="part_count"/>
+		<property name="com.jaspersoft.studio.field.label" value="part_count"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="executing_time" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="executing_time"/>
+		<property name="com.jaspersoft.studio.field.label" value="executing_time"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="abbraat-robotpda"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SUM(executing_time)" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="SUM(executing_time)"/>
+		<property name="com.jaspersoft.studio.field.label" value="SUM(executing_time)"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

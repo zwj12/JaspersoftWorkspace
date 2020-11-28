@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><jdbcDataAdapter class="net.sf.jasperreports.data.jdbc.JdbcDataAdapterImpl"><name>MariaDBAprol</name><driver>org.mariadb.jdbc.Driver</driver><username>buradmin</username><password>.buradmin</password><savePassword>true</savePassword><url>jdbc:mariadb://192.168.0.73:3306/BUR_PDA</url><database/><serverAddress/></jdbcDataAdapter>
