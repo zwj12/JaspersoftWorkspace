@@ -1,33 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RobotOverallEquipmentEffectiveness" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e4b5c66d-e997-4ce8-a9b9-25f68b3e1cec">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RobotOverallEquipmentEffectiveness" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e4b5c66d-e997-4ce8-a9b9-25f68b3e1cec">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDB"/>
 	<property name="ireport.jasperserver.url" value="http://192.168.0.73:8080/jasperserver-pro/"/>
 	<property name="ireport.jasperserver.user" value="jasperadmin"/>
 	<property name="ireport.jasperserver.report.resource" value="/reports/robot_oee_files/main_jrxml"/>
 	<property name="ireport.jasperserver.reportUnit" value="/reports/robot_oee"/>
-	<property name="com.jaspersoft.studio.unit." value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
-	<parameter name="IPAddress" class="java.lang.String">
+	<parameter name="IPAddress" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["10.0.2.2"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="SystemName" class="java.lang.String">
+	<parameter name="SystemName" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["Controller_Aprol"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="OEEFrom" class="java.sql.Date">
+	<parameter name="OEEFrom" class="java.sql.Date" isForPrompting="false">
 		<defaultValueExpression><![CDATA[DATE(2020,11,29)]]></defaultValueExpression>
 	</parameter>
-	<parameter name="OEETo" class="java.sql.Date">
+	<parameter name="OEETo" class="java.sql.Date" isForPrompting="false">
 		<defaultValueExpression><![CDATA[DATE(2020,11,30)]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
@@ -62,15 +53,15 @@ WHERE abbraat_robotpda.ip_address =  $P{IPAddress} AND abbraat_robotpda.system_n
 		<band height="320">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField>
-				<reportElement style="SubTitle" x="60" y="0" width="240" height="40" uuid="7ea97249-bfa2-47cf-b4c3-db05034ebac4">
+				<reportElement style="SubTitle" x="70" y="0" width="240" height="40" uuid="7ea97249-bfa2-47cf-b4c3-db05034ebac4">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{system_name}]]></textFieldExpression>
 			</textField>
 			<pieChart>
 				<chart evaluationTime="Report">
-					<reportElement x="0" y="40" width="360" height="280" uuid="f707ebf1-7028-4e5d-b566-59c3290c444d">
+					<reportElement x="0" y="40" width="380" height="280" uuid="f707ebf1-7028-4e5d-b566-59c3290c444d">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					</reportElement>
 					<chartTitle/>
