@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PLC_oee" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ab3b611e-0033-4021-9ade-340463465363">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDBAprol"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="IPAddress" class="java.lang.String">
+		<defaultValueExpression><![CDATA["192.168.0.214"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OEEFrom" class="java.sql.Date">
+		<defaultValueExpression><![CDATA[DATE(2020,12,9)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OEETo" class="java.sql.Date">
+		<defaultValueExpression><![CDATA[DATE(2020,12,10)]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT abbraat_plcpda.station_name, "executing" as type, SUM(executing_time) AS oee_time, ROUND( SUM(executing_time) /(UNIX_TIMESTAMP($P{OEETo})-UNIX_TIMESTAMP($P{OEEFrom}))*100,2) AS percentage  FROM `BUR_PDA`.`ABBRAAT-PLCPDA` AS abbraat_plcpda
+WHERE abbraat_plcpda.ip_address =  $P{IPAddress} AND  abbraat_plcpda.ts>= $P{OEEFrom}  AND abbraat_plcpda.ts< $P{OEETo}
+union
+SELECT abbraat_plcpda.station_name, "idle", (UNIX_TIMESTAMP($P{OEETo})-UNIX_TIMESTAMP($P{OEEFrom}) - SUM(executing_time)) AS oee_time, ROUND( (UNIX_TIMESTAMP($P{OEETo})-UNIX_TIMESTAMP($P{OEEFrom}) - SUM(executing_time)) /(UNIX_TIMESTAMP($P{OEETo})-UNIX_TIMESTAMP($P{OEEFrom}))*100,2) AS percentage    FROM `BUR_PDA`.`ABBRAAT-PLCPDA` AS abbraat_plcpda
+WHERE abbraat_plcpda.ip_address =  $P{IPAddress} AND  abbraat_plcpda.ts>= $P{OEEFrom}  AND abbraat_plcpda.ts< $P{OEETo}]]>
+	</queryString>
+	<field name="station_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="station_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="station_name"/>
+	</field>
+	<field name="type" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="type"/>
+		<property name="com.jaspersoft.studio.field.label" value="type"/>
+	</field>
+	<field name="oee_time" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="oee_time"/>
+		<property name="com.jaspersoft.studio.field.label" value="oee_time"/>
+	</field>
+	<field name="percentage" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="percentage"/>
+		<property name="com.jaspersoft.studio.field.label" value="percentage"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="320" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement x="0" y="40" width="360" height="280" uuid="5f2bc024-d3c0-415b-8255-1543d429182c">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset resetType="Report"/>
+					<keyExpression><![CDATA[$F{type} + " (" + $F{percentage} + "%)"]]></keyExpression>
+					<valueExpression><![CDATA[$F{oee_time}]]></valueExpression>
+					<labelExpression><![CDATA[$F{type}]]></labelExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<textField>
+				<reportElement x="60" y="0" width="240" height="40" uuid="5e64a951-dfdc-4f2a-89ac-22c9591c60ff">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{station_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>

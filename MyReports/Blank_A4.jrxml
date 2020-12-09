@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="41b3dd9c-4edb-401a-9c6d-0e2826b34e53">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT abbraat_robotpda.system_name, "executing" as type, SUM(executing_time) AS oee_time, ROUND( SUM(executing_time) /(UNIX_TIMESTAMP($P{OEETo})-UNIX_TIMESTAMP($P{OEEFrom}))*100,2) AS percentage  FROM `BUR_PDA`.`ABBRAAT-RobotPDA` AS abbraat_robotpda
+WHERE abbraat_robotpda.ip_address =  $P{IPAddress} AND abbraat_robotpda.system_name =  $P{SystemName}  AND  abbraat_robotpda.ts>= $P{OEEFrom}  AND abbraat_robotpda.ts< $P{OEETo}
+union
+SELECT abbraat_robotpda.system_name, "idle", (UNIX_TIMESTAMP($P{OEETo})-UNIX_TIMESTAMP($P{OEEFrom}) - SUM(executing_time)) AS oee_time, ROUND( (UNIX_TIMESTAMP($P{OEETo})-UNIX_TIMESTAMP($P{OEEFrom}) - SUM(executing_time)) /(UNIX_TIMESTAMP($P{OEETo})-UNIX_TIMESTAMP($P{OEEFrom}))*100,2) AS percentage    FROM `BUR_PDA`.`ABBRAAT-RobotPDA` AS abbraat_robotpda
+WHERE abbraat_robotpda.ip_address =  $P{IPAddress} AND abbraat_robotpda.system_name =  $P{SystemName}  AND  abbraat_robotpda.ts>= $P{OEEFrom}  AND abbraat_robotpda.ts< $P{OEETo}]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

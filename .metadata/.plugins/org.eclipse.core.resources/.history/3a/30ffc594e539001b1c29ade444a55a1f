@@ -3,7 +3,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="robot-elog" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5021754f-d2fa-423f-bbb3-c85bd6ac6631">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDBAprol"/>
-	<property name="ireport.jasperserver.url" value="http://localhost:8082/jasperserver/"/>
+	<property name="ireport.jasperserver.url" value="http://192.168.0.73:8080/jasperserver-pro/"/>
 	<property name="ireport.jasperserver.user" value="jasperadmin"/>
 	<property name="ireport.jasperserver.report.resource" value="/reports/robot_elog_files/main_jrxml"/>
 	<property name="ireport.jasperserver.reportUnit" value="/reports/robot_elog"/>

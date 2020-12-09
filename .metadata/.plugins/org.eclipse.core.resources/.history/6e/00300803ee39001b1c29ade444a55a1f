@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PLC_oee" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ab3b611e-0033-4021-9ade-340463465363">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDBAprol"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="IPAddress" class="java.lang.String">
+		<defaultValueExpression><![CDATA["192.168.0.214"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OEEFrom" class="java.sql.Date">
+		<defaultValueExpression><![CDATA[DATE(2020,12,9)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OEETo" class="java.sql.Date">
+		<defaultValueExpression><![CDATA[DATE(2020,12,10)]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT abbraat_plcpda.station_name, "executing" as type, SUM(executing_time) AS oee_time, ROUND( SUM(executing_time) /(UNIX_TIMESTAMP($P{OEETo})-UNIX_TIMESTAMP($P{OEEFrom}))*100,2) AS percentage  FROM `BUR_PDA`.`ABBRAAT-PLCPDA` AS abbraat_plcpda
+WHERE abbraat_plcpda.ip_address =  $P{IPAddress} AND  abbraat_plcpda.ts>= $P{OEEFrom}  AND abbraat_plcpda.ts< $P{OEETo}
+union
+SELECT abbraat_plcpda.station_name, "idle", (UNIX_TIMESTAMP($P{OEETo})-UNIX_TIMESTAMP($P{OEEFrom}) - SUM(executing_time)) AS oee_time, ROUND( (UNIX_TIMESTAMP($P{OEETo})-UNIX_TIMESTAMP($P{OEEFrom}) - SUM(executing_time)) /(UNIX_TIMESTAMP($P{OEETo})-UNIX_TIMESTAMP($P{OEEFrom}))*100,2) AS percentage    FROM `BUR_PDA`.`ABBRAAT-PLCPDA` AS abbraat_plcpda
+WHERE abbraat_plcpda.ip_address =  $P{IPAddress} AND  abbraat_plcpda.ts>= $P{OEEFrom}  AND abbraat_plcpda.ts< $P{OEETo}]]>
+	</queryString>
+	<field name="station_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="station_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="station_name"/>
+	</field>
+	<field name="type" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="type"/>
+		<property name="com.jaspersoft.studio.field.label" value="type"/>
+	</field>
+	<field name="oee_time" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="oee_time"/>
+		<property name="com.jaspersoft.studio.field.label" value="oee_time"/>
+	</field>
+	<field name="percentage" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="percentage"/>
+		<property name="com.jaspersoft.studio.field.label" value="percentage"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
